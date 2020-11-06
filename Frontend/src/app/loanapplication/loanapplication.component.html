@@ -1,0 +1,110 @@
+<br>
+<br>
+<div class="container">
+  <br>
+<H2>Fill out the form below</H2>
+<div class="container">
+  <fieldset class="form-group">
+    <label for="">Enter customer Id</label>
+    <input type="number" [(ngModel)]="loan.customerId" class="form-control" name="customerId" required="required">
+</fieldset>
+
+    <fieldset class="form-group">
+        <label for="">loan amount  (must be greater than zero)</label>
+        <input type="number" min=1 [(ngModel)]="loan.loanAmount" class="form-control" name="loanAmount" required="required">
+    </fieldset>
+    <!-- <fieldset class="form-group">
+      <label for="">principle</label>
+      <input type="text" min=10 [(ngModel)]="loan.principle" class="form-control" name="principle" required="required">
+  </fieldset> -->
+    
+    <fieldset class="form-group">
+      <label for="">Interest rate</label>
+      <input type="number" min=1 [(ngModel)]="loan.interestRate" class="form-control" name="interestRate" required="required">
+  </fieldset>
+    <!-- <fieldset class="form-group">
+      <label for="">Even ka</label>
+      <input type="number" min=1 [(ngModel)]="loan.hecheven" class="form-control" name="hecheven" required="required">
+  </fieldset> -->
+
+    <fieldset class="form-group">
+      <label for="">Period in years</label>
+      <input type="number" min=1 [(ngModel)]="loan.tenure" class="form-control"  pattern="[0-9]+" name="tenure" required="required">
+  </fieldset>
+  
+  <fieldset class="form-group">
+    <label for="">Payment term</label>
+    <input type="text" min=1 [(ngModel)]="loan.principle" class="form-control"   name="principle" required="required">
+</fieldset>
+<!-- 
+  <fieldset class="form-group">
+    <label for="">is Even Principle</label>
+    <input type="number"  [(ngModel)]="loan.isThisLoanEven" class="form-control" name="isThisLoanEven" required="required">
+</fieldset> -->
+
+
+    <!-- <fieldset class="form-group">
+        <label for="">paymentFrequency</label>
+        <input type="number" [(ngModel)]="loan.paymentFrequency" class="form-control" name="paymentFrequency" required="required">
+    </fieldset> -->
+<br>
+    <fieldset>
+    <label for="">payment frequency</label>
+    <div class="form-check">
+        <input class="form-check-input" type="radio" name="exampleRadios" [(ngModel)]="loan.paymentFrequency" id="exampleRadios1" value=12 checked>
+        <label class="form-check-label" for="exampleRadios1">
+          Monthly
+        </label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="radio" name="exampleRadios" [(ngModel)]="loan.paymentFrequency" id="exampleRadios2" value=4 required>
+        <label class="form-check-label" for="exampleRadios2">
+            Quarterly
+        </label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="radio" name="exampleRadios" [(ngModel)]="loan.paymentFrequency" id="exampleRadios3" value=2 checked>
+        <label class="form-check-label" for="exampleRadios3">
+            Half Yearly
+        </label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="radio" name="exampleRadios" [(ngModel)]="loan.paymentFrequency" id="exampleRadios4" value=1 checked>
+        <label class="form-check-label" for="exampleRadios4">
+            Yearly
+        </label>
+      </div>
+    </fieldset>
+    <!-- {{loan.hecheven}} -->
+    <!-- <fieldset class="form-group">
+        <label for="">EvenPrinciple</label>
+        <input type="number" [(ngModel)]="even" class="form-control" name="EvenPrinciple" required="required">
+    </fieldset>
+    <br>
+    <label for="">EvenPrinciple</label>
+    <div class="form-check">
+        <input class="form-check-input" type="radio" name="even" [(ngModel)]="even" id="exampleRadios10" value=1 >
+        <label class="form-check-label" for="exampleRadios10">
+          Yes
+        </label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="radio" name="even" [(ngModel)]="even" id="exampleRadios20" value=0>
+        <label class="form-check-label" for="exampleRadios20">
+          No
+        </label>
+      </div> -->
+      
+<br>
+
+<fieldset>
+      <div>
+        <label for="">Select a Date to start loan</label>
+        <input class="form-control" type="date"  min="2020-11-03" value="2020-11-02" [(ngModel)]="loan.loanStartDate" id="example-date-input" required>
+      </div>
+    </fieldset>
+
+<br>
+    <button type="submit" class="btn btn-primary" (click)="saveLoan()" *ngIf="(loan.loanAmount>0 && loan.loanAmount && loan.paymentFrequency>0 &&loan.interestRate>0 && loan.tenure>0 )">Apply</button>
+</div>
+</div><br><br><br>

@@ -1,0 +1,68 @@
+<br>
+<br>
+<br>
+<div class="container">
+
+<h1 class="text-center">Loan Details</h1>
+
+<table class="table container">
+    <thead>
+      <tr>
+        <th scope="col">Loan Id</th>
+        <th scope="col">Customer Id</th>
+        <th scope="col">Amount</th>
+        <th scope="col">Trade date</th>
+        <th scope="col">Start date</th>
+        <th scope="col">Maturity date</th>
+        <th scope="col">Payment frequency</th>
+        <th scope="col">Interest rate</th>
+        <th scope="col">Click to view</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr  *ngFor="let loan of loans">
+        <th scope="row">{{loan.loanId}}</th>
+        <td>{{loan.customerId}}</td>
+        <td>{{loan.loanAmount  | number}}</td>
+        <td>{{loan.tradeDate}}</td>
+        <td>{{loan.loanStartDate}}</td>
+        <td>{{loan.maturityDate}}</td>
+        <td>{{loan.paymentFrequency  | number}}</td>
+        <td>{{loan.interestRate  | number}}</td>
+        <td><button (click)="toggleDisplay(loan.loanId)" class="btn btn-primary">view</button></td>
+      </tr >
+      <tr> <td colspan="9" class="text-left" > <button (click)="addLoan(id)" class="btn btn-primary"  >Apply for a new Loan</button></td>
+      </tr>
+    </tbody>
+  </table>
+
+<div *ngIf="isShow==true">
+  <h1 class="text-center">Payment Shedules</h1>
+
+  <table class="table container">
+    <thead>
+      <tr>
+        <th scope="col">Loan Id</th>
+        <th scope="col">Payment date</th>
+        <th scope="col">Principal </th>
+        <th scope="col">Projected interest </th>
+        <th scope="col">Payment amount </th>
+        <th scope="col">Payment status</th>
+      </tr>
+      
+    </thead>
+    <tbody>
+      <tr  *ngFor="let paymentShedule of paymentShedules">
+        <th *ngIf="paymentShedule.loanId==loanIdCurrentSchedule" scope="row">{{paymentShedule.loanId}}</th>
+        <td *ngIf="paymentShedule.loanId==loanIdCurrentSchedule" >{{paymentShedule.paymentDate}}</td>
+        <td *ngIf="paymentShedule.loanId==loanIdCurrentSchedule" >{{paymentShedule.principal  | number}}</td>
+        <td *ngIf="paymentShedule.loanId==loanIdCurrentSchedule" >{{paymentShedule.projectedInterest  | number }}</td>
+        <td *ngIf="paymentShedule.loanId==loanIdCurrentSchedule" >{{paymentShedule.paymentAmount  | number }}</td>
+        <td *ngIf="paymentShedule.loanId==loanIdCurrentSchedule" >{{paymentShedule.paymentStatus}}</td>
+      </tr> 
+    
+      <tr><br></tr> 
+      <tr><br></tr> 
+    </tbody>
+  </table>
+  </div>
