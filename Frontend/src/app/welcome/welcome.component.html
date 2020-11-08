@@ -10,7 +10,7 @@
       <tr>
         <th scope="col">Loan Id</th>
         <th scope="col">Customer Id</th>
-        <th scope="col">Amount</th>
+        <th scope="col">Amount(Rs)</th>
         <th scope="col">Trade date</th>
         <th scope="col">Start date</th>
         <th scope="col">Maturity date</th>
@@ -23,12 +23,12 @@
       <tr  *ngFor="let loan of loans">
         <th scope="row">{{loan.loanId}}</th>
         <td>{{loan.customerId}}</td>
-        <td>{{loan.loanAmount  | number}}</td>
+        <td>{{loan.loanAmount  | number  : '1.2-2'}}</td>
         <td>{{loan.tradeDate}}</td>
         <td>{{loan.loanStartDate}}</td>
         <td>{{loan.maturityDate}}</td>
         <td>{{loan.paymentFrequency  | number}}</td>
-        <td>{{loan.interestRate  | number}}</td>
+        <td>{{loan.interestRate  | number  : '1.2-2'}}</td>
         <td><button (click)="toggleDisplay(loan.loanId)" class="btn btn-primary">view</button></td>
       </tr >
       <tr> <td colspan="9" class="text-left" > <button (click)="addLoan(id)" class="btn btn-primary"  >Apply for a new Loan</button></td>
@@ -44,9 +44,9 @@
       <tr>
         <th scope="col">Loan Id</th>
         <th scope="col">Payment date</th>
-        <th scope="col">Principal </th>
-        <th scope="col">Projected interest </th>
-        <th scope="col">Payment amount </th>
+        <th scope="col">Principal(Rs) </th>
+        <th scope="col">Projected interest(Rs) </th>
+        <th scope="col">Payment amount(Rs) </th>
         <th scope="col">Payment status</th>
       </tr>
       
@@ -55,9 +55,9 @@
       <tr  *ngFor="let paymentShedule of paymentShedules">
         <th *ngIf="paymentShedule.loanId==loanIdCurrentSchedule" scope="row">{{paymentShedule.loanId}}</th>
         <td *ngIf="paymentShedule.loanId==loanIdCurrentSchedule" >{{paymentShedule.paymentDate}}</td>
-        <td *ngIf="paymentShedule.loanId==loanIdCurrentSchedule" >{{paymentShedule.principal  | number}}</td>
-        <td *ngIf="paymentShedule.loanId==loanIdCurrentSchedule" >{{paymentShedule.projectedInterest  | number }}</td>
-        <td *ngIf="paymentShedule.loanId==loanIdCurrentSchedule" >{{paymentShedule.paymentAmount  | number }}</td>
+        <td *ngIf="paymentShedule.loanId==loanIdCurrentSchedule" >{{paymentShedule.principal  | number : '1.2-2'}}</td>
+        <td *ngIf="paymentShedule.loanId==loanIdCurrentSchedule" >{{paymentShedule.projectedInterest  | number : '1.2-2' }}</td>
+        <td *ngIf="paymentShedule.loanId==loanIdCurrentSchedule" >{{paymentShedule.paymentAmount  | number : '1.2-2'}}</td>
         <td *ngIf="paymentShedule.loanId==loanIdCurrentSchedule" >{{paymentShedule.paymentStatus}}</td>
       </tr> 
     
