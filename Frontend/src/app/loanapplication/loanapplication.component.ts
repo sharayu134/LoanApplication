@@ -31,7 +31,6 @@ export class LoanapplicationComponent implements OnInit {
   }
 
   saveLoan(){
-    // this.loan.customerId = this.id;
     console.log(this.loan);
     this.loanService.createLoan(this.id, this.loan)
           .subscribe (

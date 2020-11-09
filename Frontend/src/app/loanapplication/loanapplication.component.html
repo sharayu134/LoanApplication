@@ -13,43 +13,20 @@
         <label for="">loan amount  (must be greater than zero)</label>
         <input type="number" min=1 [(ngModel)]="loan.loanAmount" class="form-control" name="loanAmount" required="required">
     </fieldset>
-    <!-- <fieldset class="form-group">
-      <label for="">principle</label>
-      <input type="text" min=10 [(ngModel)]="loan.principle" class="form-control" name="principle" required="required">
-  </fieldset> -->
-    
+
     <fieldset class="form-group">
       <label for="">Interest rate</label>
       <input type="number" min=1 [(ngModel)]="loan.interestRate" class="form-control" name="interestRate" required="required">
   </fieldset>
-    <!-- <fieldset class="form-group">
-      <label for="">Even ka</label>
-      <input type="number" min=1 [(ngModel)]="loan.hecheven" class="form-control" name="hecheven" required="required">
-  </fieldset> -->
-
+  
     <fieldset class="form-group">
       <label for="">Period in years</label>
       <input type="number" min=1 [(ngModel)]="loan.tenure" class="form-control"  pattern="[0-9]+" name="tenure" required="required">
   </fieldset>
-  
-  <fieldset class="form-group">
-    <label for="">Payment term</label>
-    <input type="text" min=1 [(ngModel)]="loan.principle" class="form-control"   name="principle" required="required">
-</fieldset>
-<!-- 
-  <fieldset class="form-group">
-    <label for="">is Even Principle</label>
-    <input type="number"  [(ngModel)]="loan.isThisLoanEven" class="form-control" name="isThisLoanEven" required="required">
-</fieldset> -->
 
-
-    <!-- <fieldset class="form-group">
-        <label for="">paymentFrequency</label>
-        <input type="number" [(ngModel)]="loan.paymentFrequency" class="form-control" name="paymentFrequency" required="required">
-    </fieldset> -->
 <br>
     <fieldset>
-    <label for="">payment frequency</label>
+    <label for="">payment frequency :</label>
     <div class="form-check">
         <input class="form-check-input" type="radio" name="exampleRadios" [(ngModel)]="loan.paymentFrequency" id="exampleRadios1" value=12 checked>
         <label class="form-check-label" for="exampleRadios1">
@@ -75,26 +52,24 @@
         </label>
       </div>
     </fieldset>
-    <!-- {{loan.hecheven}} -->
-    <!-- <fieldset class="form-group">
-        <label for="">EvenPrinciple</label>
-        <input type="number" [(ngModel)]="even" class="form-control" name="EvenPrinciple" required="required">
-    </fieldset>
     <br>
-    <label for="">EvenPrinciple</label>
-    <div class="form-check">
-        <input class="form-check-input" type="radio" name="even" [(ngModel)]="even" id="exampleRadios10" value=1 >
-        <label class="form-check-label" for="exampleRadios10">
-          Yes
-        </label>
-      </div>
+    
+    <fieldset>
+      <label for="">Principle type :</label>
       <div class="form-check">
-        <input class="form-check-input" type="radio" name="even" [(ngModel)]="even" id="exampleRadios20" value=0>
-        <label class="form-check-label" for="exampleRadios20">
-          No
-        </label>
-      </div> -->
-      
+          <input class="form-check-input" type="radio" name="exampleRadios31" [(ngModel)]="loan.principle" id="exampleRadios31" value="even" checked>
+          <label class="form-check-label" for="exampleRadios31">
+            Even
+          </label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="radio" name="exampleRadios32" [(ngModel)]="loan.principle" id="exampleRadios32" value="interesrOnly" required>
+          <label class="form-check-label" for="exampleRadios2">
+              Interest Only
+          </label>
+        </div>
+      </fieldset>
+     
 <br>
 
 <fieldset>
