@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { LoanService } from './../service/data/loan.service';
 import { Loan } from '../welcome/welcome.component';
 import { DatePipe } from '@angular/common';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-loanapplication',
@@ -22,7 +23,8 @@ export class LoanapplicationComponent implements OnInit {
     private loanService: LoanService,
     private route: ActivatedRoute,
     private router: Router,
-    public datePipe: DatePipe
+    public datePipe: DatePipe,
+    private toastr: ToastrService
   ) { }
 
   ngOnInit(): void {
@@ -40,6 +42,7 @@ export class LoanapplicationComponent implements OnInit {
 
             }
           );
+    this.toastr.info('Loan created successfully', '');
   }
 
 }
