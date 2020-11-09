@@ -88,11 +88,10 @@ public class LoanController {
 		}
 	}
 		
-	@GetMapping("/loans/{id}")
-	public  ResponseEntity<Loan> get(@PathVariable Integer id) {
-		//return loanService.get(id);
+	@GetMapping("/loans/{loanId}")
+	public  ResponseEntity<Loan> get(@PathVariable Integer loanId) {
 		try {
-			Loan loan =loanService.get(id);
+			Loan loan =loanService.get(loanId);
 			return new ResponseEntity<Loan>(loan,HttpStatus.OK);
 		}catch(NoSuchElementException e) {
 			return new ResponseEntity<Loan>(HttpStatus.NOT_FOUND);

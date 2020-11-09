@@ -27,13 +27,13 @@ public class CustomerService {
 		customerRepository.save(customer);
 	}
 	
-	public Customer get(Integer id) {
-		return customerRepository.findById(id).get();
+	public Customer get(Integer customerId) {
+		return customerRepository.findById(customerId).get();
 	}
 	
 	
-	public void delete(Integer id) {
-		customerRepository.deleteById(id);
+	public void delete(Integer customerId) {
+		customerRepository.deleteById(customerId);
 	}
 	
 

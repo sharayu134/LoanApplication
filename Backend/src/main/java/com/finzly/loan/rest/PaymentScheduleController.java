@@ -38,10 +38,10 @@ public class PaymentScheduleController {
 	}
 	
 	
-	@GetMapping("/paymentschedules/{id}")
-	public ResponseEntity<PaymentSchedule> get(@PathVariable Integer id) {
+	@GetMapping("/paymentschedules/{paymentscheduleId}")
+	public ResponseEntity<PaymentSchedule> get(@PathVariable Integer paymentscheduleId) {
 				try {
-					PaymentSchedule paymentSchedule =paymentScheduleService.get(id);
+					PaymentSchedule paymentSchedule =paymentScheduleService.get(paymentscheduleId);
 					return new ResponseEntity<PaymentSchedule>(paymentSchedule,HttpStatus.OK);
 				}catch(NoSuchElementException e) {
 					return new ResponseEntity<PaymentSchedule>(HttpStatus.NOT_FOUND);

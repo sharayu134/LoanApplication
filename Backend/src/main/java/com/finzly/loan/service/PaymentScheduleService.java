@@ -28,13 +28,13 @@ public class PaymentScheduleService {
 		paymentScheduleRepository.save(paymentSchedule);
 	}
 	
-	public PaymentSchedule get(Integer id) {
-		return paymentScheduleRepository.findById(id).get();
+	public PaymentSchedule get(Integer paymentscheduleId) {
+		return paymentScheduleRepository.findById(paymentscheduleId).get();
 	}
 	
 	
-	public void delete(Integer id) {
-		paymentScheduleRepository.deleteById(id);
+	public void delete(Integer paymentscheduleId) {
+		paymentScheduleRepository.deleteById(paymentscheduleId);
 	}
 
 }

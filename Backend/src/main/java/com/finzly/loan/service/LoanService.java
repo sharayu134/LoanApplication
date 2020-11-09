@@ -27,12 +27,12 @@ public class LoanService {
 		loanRepository.save(loan);
 	}
 	
-	public Loan get(Integer id) {
-		return loanRepository.findById(id).get();
+	public Loan get(Integer loanId) {
+		return loanRepository.findById(loanId).get();
 	}
 	
 	
-	public void delete(Integer id) {
-		loanRepository.deleteById(id);
+	public void delete(Integer loanId) {
+		loanRepository.deleteById(loanId);
 	}
 }

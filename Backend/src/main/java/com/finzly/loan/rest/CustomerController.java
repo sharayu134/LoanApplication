@@ -31,11 +31,10 @@ public class CustomerController {
 		return customerService.listAll(); 
 	}
 	
-	@GetMapping("/customers/{id}")
-	public ResponseEntity<Customer>  get(@PathVariable Integer id) {
-//		return customerService.get(id);
+	@GetMapping("/customers/{customerId}")
+	public ResponseEntity<Customer>  get(@PathVariable Integer customerId) {
 		try {
-			Customer customer =customerService.get(id);
+			Customer customer =customerService.get(customerId);
 			return new ResponseEntity<Customer>(customer,HttpStatus.OK);
 		}catch(NoSuchElementException e) {
 			return new ResponseEntity<Customer>(HttpStatus.NOT_FOUND);
