@@ -46,46 +46,8 @@ public class LoanController {
 	}
 	
 	@PostMapping("/loans")
-	public void add(@RequestBody Loan  loan) {
-		loan.setTradeDate( LocalDate.now() );
-		int n=loan.getPaymentFrequency();
-		loan.setMaturityDate(loan.getLoanStartDate().plusYears(loan.getTenure()));
-		loan.setPaymentFrequency(n);//is this statement useless?	
-		LocalDate localpaymentDate=(loan.getLoanStartDate());		
+	public void add(@RequestBody Loan  loan) {	
 		loanService.save(loan);
-		int loanId=loan.getLoanId();
-		double amount=loan.getLoanAmount();
-		int numberOfPAymentSchedules=(loan.getTenure()*loan.getPaymentFrequency());
-		double principle=(amount)/numberOfPAymentSchedules;
-		double interest;
-		logger.debug(loan.getPrinciple());
-		String even="even";
-		boolean a = even.equals(loan.getPrinciple());
-		logger.debug(" "+a);
-		if(a) {
-			for (int i=0;i<numberOfPAymentSchedules;i++)
-			{
-				interest=((amount-(principle*(i)))*loan.getInterestRate())/(100*loan.getPaymentFrequency());
-				localpaymentDate=localpaymentDate.plusMonths( 12/n );
-				PaymentSchedule paymentSchedule =new PaymentSchedule(loanId,localpaymentDate,principle,interest,"projected",(principle+interest));
-				PaymentScheduleService.save(paymentSchedule);
-			}
-		}
-		else {
-			interest=(amount*loan.getInterestRate()*loan.getTenure())/(100*numberOfPAymentSchedules);
-			for (int i=0;i<numberOfPAymentSchedules;i++)
-			{
-				localpaymentDate=localpaymentDate.plusMonths( 12/n );
-				if(i==numberOfPAymentSchedules-1) {
-					PaymentSchedule paymentSchedule =new PaymentSchedule(loanId,localpaymentDate,amount,interest,"projected",interest+amount);
-					PaymentScheduleService.save(paymentSchedule);
-				}
-				else {
-					PaymentSchedule paymentSchedule =new PaymentSchedule(loanId,localpaymentDate,0,interest,"projected",interest);
-					PaymentScheduleService.save(paymentSchedule);
-				}				
-			}
-		}
 	}
 		
 	@GetMapping("/loans/{loanId}")
