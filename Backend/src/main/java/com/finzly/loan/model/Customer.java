@@ -40,4 +40,19 @@ public class Customer {
 		return "Customer [customerId=" + customerId + ", password=" + password + "]";
 	}
 
+	@Override
+	public boolean equals(Object obj) {
+//	if(this == obj)return true;
+//	if(obj == null || obj.getClass()!= this.getClass())return false;
+	Customer customer = (Customer) obj;
+	 if(customer.getCustomerId()==this.customerId&&customer.getPassword()==this.password){return true;}
+    return false;
+	}
+	
+	public void setCustomerId(int customerId) {
+		this.customerId = customerId;
+	}
+	public void setPassword(String password) {
+		this.password = password;
+	}
 }

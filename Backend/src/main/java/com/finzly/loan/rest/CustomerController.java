@@ -1,8 +1,5 @@
 package com.finzly.loan.rest;
 
-import java.util.List;
-import java.util.NoSuchElementException;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -22,23 +19,14 @@ import com.finzly.loan.service.CustomerService;
 @CrossOrigin(origins="http://localhost:4200")
 @RestController
 public class CustomerController {
-	
 	@Autowired
 	private CustomerService customerService;
 
-	@GetMapping("/customers")
-	public List<Customer>list(){
-		return customerService.listAll(); 
-	}
-	
 	@GetMapping("/customers/{customerId}")
 	public ResponseEntity<Customer>  get(@PathVariable Integer customerId) {
-		try {
+		 
 			Customer customer =customerService.get(customerId);
 			return new ResponseEntity<Customer>(customer,HttpStatus.OK);
-		}catch(NoSuchElementException e) {
-			return new ResponseEntity<Customer>(HttpStatus.NOT_FOUND);
- 
-		}
+		
 	}
 }

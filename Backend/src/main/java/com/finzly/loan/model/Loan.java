@@ -146,5 +146,26 @@ public class Loan {
 				+ ", principle=" + principle + "]";
 	}
 
+	@Override
+	public boolean equals(Object obj) {
+//	    if(this == obj)return true;
+//	    if(obj == null || obj.getClass()!= this.getClass())return false;
+
+	    Loan loan = (Loan) obj;
+	    if(
+	    		loan.getCustomerId()==this.customerId&&
+	    		loan.getInterestRate()==this.interestRate&&
+	    		loan.getLoanAmount()==this.loanAmount&&
+	    		loan.getLoanId()==this.loanId&&
+	    		(loan.getLoanStartDate().compareTo(this.loanStartDate) ==0 ) &&
+	    		(loan.getMaturityDate().compareTo(this.maturityDate) ==0 ) &&
+	    		(loan.getTradeDate().compareTo(this.tradeDate) ==0 ) &&
+	    		loan.getPaymentFrequency()==this.paymentFrequency&&
+	    		loan.getPrinciple()==this.principle&&
+	    		loan.getTenure()==this.tenure
+  ){return true;}
+
+	    return false;
+	}
 	
 }

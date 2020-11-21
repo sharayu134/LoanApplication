@@ -3,6 +3,7 @@ package com.finzly.loan.model;
 
 import java.time.LocalDate;
 
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -107,7 +108,22 @@ public class PaymentSchedule {
 				+ paymentDate + ", principal=" + principal + ", projectedInterest=" + projectedInterest
 				+ ", paymentStatus=" + paymentStatus + ", paymentAmount=" + paymentAmount + "]";
 	}
-	
-	
-	
+	@Override
+	public boolean equals(Object obj) {
+//	    if(this == obj)return true;
+
+//	  	    if(obj == null || obj.getClass()!= this.getClass())return false;
+
+	    PaymentSchedule paymentSchedule = (PaymentSchedule) obj;
+	    if(paymentSchedule.getPaymentStatus().equals(this.paymentStatus) &&
+	            (paymentSchedule.getLoanId() == this.loanId) &&
+	            (paymentSchedule.getPaymentAmount() == this.paymentAmount) && 
+	            (paymentSchedule.getPaymentDate().compareTo(this.paymentDate) ==0 ) &&
+	            (paymentSchedule.getPaymentScheduleId() == this.paymentScheduleId) &&
+	            (paymentSchedule.getPrincipal() == this.principal) &&
+	            (paymentSchedule.getProjectedInterest() == this.projectedInterest) 
+  ){return true;}
+
+	    return false;
+	}
 }
