@@ -30,6 +30,5 @@
 	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/5"/>
-	<classpathentry kind="lib" path="F:/DotEXE/jacoco-maven-plugin-0.8.6.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>
