@@ -36,5 +36,4 @@ class LoanApplicationTests {
 		assertThat(paymentScheduleController).isNotNull();
 	}
 
-
 }
