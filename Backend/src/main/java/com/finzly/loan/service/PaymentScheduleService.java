@@ -36,8 +36,10 @@ public class PaymentScheduleService {
 	
 	public List<PaymentSchedule> save(Loan loan) {
 		
+		// Todo = try to divide function into smaller functions, one function should perform only one task , (5-6 lines)
+		
 		List<PaymentSchedule>paymentScheduleList = new ArrayList<PaymentSchedule>(); 
-		int n=loan.getPaymentFrequency();
+		int paymentFrequencyYearly=loan.getPaymentFrequency();
 		LocalDate localpaymentDate=(loan.getLoanStartDate());	
 
 		int loanId=loan.getLoanId();
@@ -45,13 +47,13 @@ public class PaymentScheduleService {
 		int numberOfPAymentSchedules=(loan.getTenure()*loan.getPaymentFrequency());
 		double principle=(amount)/numberOfPAymentSchedules;
 		double interest;
-		String even="even";
+		String even="EVEN";
 		if(even.equals(loan.getPrinciple())) {
 			for (int i=0;i<numberOfPAymentSchedules;i++)
 			{
 				interest=((amount-(principle*(i)))*loan.getInterestRate()*loan.getTenure())/(100*loan.getPaymentFrequency());
-				localpaymentDate=localpaymentDate.plusMonths( 12/n );
-				PaymentSchedule paymentSchedule =new PaymentSchedule(loanId,localpaymentDate,principle,interest,"projected",(principle+interest));
+				localpaymentDate=localpaymentDate.plusMonths( 12/paymentFrequencyYearly );
+				PaymentSchedule paymentSchedule =new PaymentSchedule(loanId,localpaymentDate,principle,interest,"PROJECTED",(principle+interest));
 				paymentScheduleRepository.save(paymentSchedule);
 				paymentScheduleList.add(paymentSchedule);
 			
@@ -61,14 +63,14 @@ public class PaymentScheduleService {
 			interest=(amount*loan.getInterestRate()*loan.getTenure())/(100*numberOfPAymentSchedules);
 			for (int i=0;i<numberOfPAymentSchedules;i++)
 			{
-				localpaymentDate=localpaymentDate.plusMonths( 12/n );
+				localpaymentDate=localpaymentDate.plusMonths( 12/paymentFrequencyYearly );
 				if(i==numberOfPAymentSchedules-1) {
-					PaymentSchedule paymentSchedule =new PaymentSchedule(loanId,localpaymentDate,amount,interest,"projected",interest+amount);
+					PaymentSchedule paymentSchedule =new PaymentSchedule(loanId,localpaymentDate,amount,interest,"PROJECTED",interest+amount);
 					paymentScheduleRepository.save(paymentSchedule);
 					paymentScheduleList.add(paymentSchedule);
 				}
 				else {
-					PaymentSchedule paymentSchedule =new PaymentSchedule(loanId,localpaymentDate,0,interest,"projected",interest);
+					PaymentSchedule paymentSchedule =new PaymentSchedule(loanId,localpaymentDate,0,interest,"PROJECTED",interest);
 					paymentScheduleRepository.save(paymentSchedule);
 					paymentScheduleList.add(paymentSchedule);
 				}				

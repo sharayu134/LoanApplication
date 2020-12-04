@@ -11,12 +11,12 @@
         <th scope="col">Loan Id</th>
         <th scope="col">Customer Id</th>
         <th scope="col">Amount(Rs)</th>
-        <th scope="col">Trade date</th>
-        <th scope="col">Start date</th>
-        <th scope="col">Maturity date</th>
-        <th scope="col">Payment frequency</th>
-        <th scope="col">Interest rate</th>
-        <th scope="col">Click to view</th>
+        <th scope="col">Trade Date</th>
+        <th scope="col">Start Date</th>
+        <th scope="col">Maturity Date</th>
+        <th scope="col">Payment Frequency</th>
+        <th scope="col">Interest Rate</th>
+        <th scope="col">Click To View</th>
       </tr>
     </thead>
     <tbody>
@@ -29,9 +29,9 @@
         <td>{{loan.maturityDate}}</td>
         <td>{{loan.paymentFrequency  | number}}</td>
         <td>{{loan.interestRate  | number  : '1.2-2'}}</td>
-        <td><button (click)="toggleDisplay(loan.loanId)" class="btn btn-primary">view</button></td>
+        <td><button (click)="toggleDisplay(loan.loanId)" class="btn btn-primary">View</button></td>
       </tr >
-      <tr> <td colspan="9" class="text-left" > <button (click)="addLoan(id)" class="btn btn-primary"  >Apply for a new Loan</button></td>
+      <tr> <td colspan="9" class="text-left" > <button (click)="addLoan(id)" class="btn btn-primary"  >Apply For A New Loan</button></td>
       </tr>
     </tbody>
   </table>
@@ -43,11 +43,11 @@
     <thead>
       <tr>
         <th scope="col">Loan Id</th>
-        <th scope="col">Payment date</th>
+        <th scope="col">Payment Date</th>
         <th scope="col">Principal(Rs) </th>
-        <th scope="col">Projected interest(Rs) </th>
-        <th scope="col">Payment amount(Rs) </th>
-        <th scope="col">Payment status</th>
+        <th scope="col">Projected Interest(Rs) </th>
+        <th scope="col">Payment Amount(Rs) </th>
+        <th scope="col">Payment Status</th>
       </tr>
       
     </thead>
