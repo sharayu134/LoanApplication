@@ -42,6 +42,7 @@ export class WelcomeComponent implements OnInit {
 
   loans: Loan[];
   paymentShedules: PaymentShedule[];
+  p: number = 1;
   // loantodo = [
   //   {id: 2, des: 'o'},
   //   {

@@ -20,7 +20,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr  *ngFor="let loan of loans">
+      <tr  *ngFor="let loan of loans | paginate: { itemsPerPage: 5, currentPage: p }">
         <th scope="row">{{loan.loanId}}</th>
         <td>{{loan.customerId}}</td>
         <td>{{loan.loanAmount  | number  : '1.2-2'}}</td>
@@ -35,6 +35,8 @@
       </tr>
     </tbody>
   </table>
+  <pagination-controls (pageChange)="p = $event"></pagination-controls>
+
 <br>
 <div *ngIf="isShow==true">
   <h1 class="text-center">Payment Shedules</h1>
