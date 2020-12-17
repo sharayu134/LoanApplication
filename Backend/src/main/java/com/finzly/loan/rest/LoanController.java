@@ -2,16 +2,22 @@ package com.finzly.loan.rest;
 
 import java.util.List;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.finzly.loan.dao.LoanRepository;
 import com.finzly.loan.model.Loan;
 import com.finzly.loan.service.LoanService;
 
@@ -21,10 +27,11 @@ import com.finzly.loan.service.LoanService;
  *This is rest controller for getting Loan list, creating new loan and payment schedules.
  */
 
-@CrossOrigin(origins="http://localhost:4200")
+@CrossOrigin(origins="http://localhost:4200", allowedHeaders = "*")
 @RestController
 public class LoanController {
 			
+	
 	@Autowired
 	private LoanService loanService;
 	@GetMapping("/loans")
@@ -63,5 +70,28 @@ public class LoanController {
 		
 		return loanList; 
 	}
+	
+	@Autowired
+	private LoanRepository loanRepository;
+	
+	Logger logger = LoggerFactory.getLogger(LoanController.class);
+	
+	  @GetMapping("/loans/list")
+	  public Page<Loan> listPaginated(@RequestParam int page) {
+//		  PageRequest pageRequest = PageRequest.of(pageNumber, pageSize);
+//		  Page<Loan> page=loanService.findPaginatedLoans(pageNumber, pageSize); 
+//		  List<Loan> loanList=page.getContent();
+//
+//	 
+////	    return new PageImpl<>(loanList, pageRequest, page.getTotalElements());
+//		  return page;
+		  
+//		  return loanService.findPaginatedLoans(pageNumber, 5);
+	
+		  logger.info(""+page);
+		  PageRequest pageRequest= PageRequest.of(page, 5);
+		  return  loanRepository.findAll(pageRequest);
+
+	  }
 	
 }
