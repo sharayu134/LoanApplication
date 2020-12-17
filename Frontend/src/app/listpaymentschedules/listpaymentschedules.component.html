@@ -1,0 +1,34 @@
+<br><br>
+<div class="main">
+    <h1 class="text-center">Payment Shedules</h1>
+  
+    <table class="table container">
+      <thead>
+        <tr>
+          <th scope="col">Loan Id</th>
+          <th scope="col">Payment Date</th>
+          <th scope="col">Principal(Rs) </th>
+          <th scope="col">Projected Interest(Rs) </th>
+          <th scope="col">Payment Amount(Rs) </th>
+          <th scope="col">Payment Status</th>
+        </tr>
+        
+      </thead>
+      <tbody>
+        <tr  *ngFor="let paymentShedule of paymentShedules">
+          <th *ngIf="paymentShedule.loanId==loanIdCurrentSchedule" scope="row">{{paymentShedule.loanId}}</th>
+          <td *ngIf="paymentShedule.loanId==loanIdCurrentSchedule" >{{paymentShedule.paymentDate}}</td>
+          <td *ngIf="paymentShedule.loanId==loanIdCurrentSchedule" >{{paymentShedule.principal  | number : '1.2-2'}}</td>
+          <td *ngIf="paymentShedule.loanId==loanIdCurrentSchedule" >{{paymentShedule.projectedInterest  | number : '1.2-2' }}</td>
+          <td *ngIf="paymentShedule.loanId==loanIdCurrentSchedule" >{{paymentShedule.paymentAmount  | number : '1.2-2'}}</td>
+          <td *ngIf="paymentShedule.loanId==loanIdCurrentSchedule && paymentShedule.paymentStatus=='PROJECTED'" id="statusRed" >{{paymentShedule.paymentStatus}}</td>
+          <td *ngIf="paymentShedule.loanId==loanIdCurrentSchedule && paymentShedule.paymentStatus=='PAID'" id="statusGreen" >{{paymentShedule.paymentStatus}}</td>
+        </tr> 
+      
+        <tr>  <button (click)="back()" class="btn btn-primary"  >Back</button></tr> 
+        <tr><br></tr> 
+      </tbody>
+    </table>
+    <br>
+  
+    </div>

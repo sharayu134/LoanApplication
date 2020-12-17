@@ -20,6 +20,7 @@ import {NgxPaginationModule} from 'ngx-pagination';
 import { LoanListWithServerSidePaginationComponent } from './loan-list-with-server-side-pagination/loan-list-with-server-side-pagination.component'; // <-- import the module
 
 import {LoanService} from '../app/service/data/loan.service';
+import { ListpaymentschedulesComponent } from './listpaymentschedules/listpaymentschedules.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import {LoanService} from '../app/service/data/loan.service';
     HeaderComponent,
     FooterComponent,
     LoanapplicationComponent,
-    LoanListWithServerSidePaginationComponent
+    LoanListWithServerSidePaginationComponent,
+    ListpaymentschedulesComponent
   ],
   imports: [
     BrowserModule,

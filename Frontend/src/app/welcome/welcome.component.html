@@ -4,7 +4,7 @@
 <div class="container">
 
 <h1 class="text-center">Loan Details</h1>
-
+<!-- <input type="number" id="customerSearchId" class="form-control" placeholder="Customer Id"  name="customerSearchId" > -->
 <table class="table container">
     <thead>
       <tr>
@@ -29,12 +29,14 @@
         <td>{{loan.maturityDate}}</td>
         <td>{{loan.paymentFrequency  | number}}</td>
         <td>{{loan.interestRate  | number  : '1.2-2'}}</td>
-        <td><button (click)="toggleDisplay(loan.loanId)" class="btn btn-primary">View</button></td>
+        <td><button (click)="viewPaymentSchedule(loan.loanId)" class="btn btn-primary">View</button></td>
       </tr >
-      <tr> <td colspan="9" class="text-left" > <button (click)="addLoan(id)" class="btn btn-primary"  >Apply For A New Loan</button></td>
-      </tr>
+      <!-- <tr> <td colspan="9" class="text-left" > <button (click)="addLoan(id)" class="btn btn-primary"  >Apply For A New Loan</button></td>
+      </tr> -->
     </tbody>
   </table>
+  <div style="margin: 1%;"> <button (click)="addLoan(id)" class="btn btn-primary buttonHover"  >Apply For A New Loan</button></div>
+
   <pagination-controls (pageChange)="p = $event"></pagination-controls>
 
 <br>
@@ -69,3 +71,4 @@
   </table>
   <br>
   </div>
+  <!-- <div>customerSearchId</div> -->

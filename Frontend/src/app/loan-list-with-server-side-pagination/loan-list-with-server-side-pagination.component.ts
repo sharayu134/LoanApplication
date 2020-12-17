@@ -77,4 +77,8 @@ export class LoanListWithServerSidePaginationComponent implements OnInit {
   }
 
 
+  viewPaymentSchedule(loanIdCurrentSchedule){
+   
+    this.router.navigate(['list_payment_schedules', loanIdCurrentSchedule]);
+  }
 }

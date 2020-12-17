@@ -39,7 +39,7 @@ export class PaymentShedule {
   styleUrls: ['./welcome.component.css']
 })
 export class WelcomeComponent implements OnInit {
-
+  customerSearchId:number;
   loans: Loan[];
   paymentShedules: PaymentShedule[];
   p: number = 1;
@@ -93,4 +93,8 @@ export class WelcomeComponent implements OnInit {
     this.loanIdCurrentSchedule = loanIdCurrentSchedule;
   }
 
+  viewPaymentSchedule(loanIdCurrentSchedule){
+   
+      this.router.navigate(['list_payment_schedules', loanIdCurrentSchedule]);
+    }
 }

@@ -3,7 +3,7 @@
 <br>
 <div class="container">
 
-<h1 class="text-center">Loan Details</h1>
+<h1 class="text-center" style=color:#17a2b8;>Loan Details</h1>
 
 <table class="table container">
     <thead>
@@ -29,12 +29,11 @@
         <td>{{loan.maturityDate}}</td>
         <td>{{loan.paymentFrequency  | number}}</td>
         <td>{{loan.interestRate  | number  : '1.2-2'}}</td>
-        <td><button (click)="toggleDisplay(loan.loanId)" class="btn btn-primary">View</button></td>
-      </tr >
-      <tr> <td colspan="9" class="text-left" > <button (click)="addLoan(id)" class="btn btn-primary"  >Apply For A New Loan</button></td>
+        <td><button (click)="viewPaymentSchedule(loan.loanId)" class="btn btn-primary">View</button></td>     
       </tr>
     </tbody>
   </table>
+  <div style="margin: 1%;"> <button (click)="addLoan(id)" class="btn btn-primary buttonHover"  >Apply For A New Loan</button></div>
   <!-- <hr> -->
   <ul class="nav nav-pills">
       <li class="nav-item" *ngFor="let p of pages; let i=index">

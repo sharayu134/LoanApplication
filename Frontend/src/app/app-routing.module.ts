@@ -5,6 +5,8 @@ import { LoanapplicationComponent } from './loanapplication/loanapplication.comp
 import { LoginComponent } from './login/login.component';
 import { WelcomeComponent } from './welcome/welcome.component';
 import { LoanListWithServerSidePaginationComponent } from './loan-list-with-server-side-pagination/loan-list-with-server-side-pagination.component';
+import { ListpaymentschedulesComponent } from './listpaymentschedules/listpaymentschedules.component';
+
 
 const routes: Routes = [
   {path: '', component: LoginComponent},
@@ -12,11 +14,15 @@ const routes: Routes = [
   {path: 'welcome/:id', component: WelcomeComponent},
   {path: 'list_loan_with_serverside_pagination', component: LoanListWithServerSidePaginationComponent},
   {path: 'loanapplication/:id', component: LoanapplicationComponent},
+  {path: 'list_payment_schedules/:id', component: ListpaymentschedulesComponent},
   {path: '**', component: ErrorComponent}
 ];
+
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
+
+
 export class AppRoutingModule { }
