@@ -1,11 +1,45 @@
 <br>
 <br>
-<br>
+
 <div class="container">
 
-<h1 class="text-center">Loan Details</h1>
-<!-- <input type="number" id="customerSearchId" class="form-control" placeholder="Customer Id"  name="customerSearchId" > -->
-<table class="table container">
+
+<h1 class="text-center" style="display: block;">Loan Details</h1>
+<input type="number" id="customerSearchId" class="form-control" placeholder="Customer Id"  style="display: block;width: 15%; margin-bottom: 1%;height: 26px;" name="customerSearchId"  [(ngModel)]="customerSearchId">
+
+<table class="table container" *ngIf="customerSearchId">
+    <thead>
+      <tr>
+        <th scope="col">Loan Id</th>
+        <th scope="col">Customer Id</th>
+        <th scope="col">Amount(Rs)</th>
+        <th scope="col">Trade Date</th>
+        <th scope="col">Start Date</th>
+        <th scope="col">Maturity Date</th>
+        <th scope="col">Payment Frequency</th>
+        <th scope="col">Interest Rate</th>
+        <th scope="col">Click To View</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr  *ngFor="let loan of loans ">
+        <th scope="row" *ngIf="customerSearchId==loan.customerId">{{loan.loanId}}</th>
+        <td *ngIf="customerSearchId==loan.customerId">{{loan.customerId}}</td>
+        <td *ngIf="customerSearchId==loan.customerId">{{loan.loanAmount  | number  : '1.2-2'}}</td>
+        <td *ngIf="customerSearchId==loan.customerId">{{loan.tradeDate}}</td>
+        <td *ngIf="customerSearchId==loan.customerId">{{loan.loanStartDate}}</td>
+        <td *ngIf="customerSearchId==loan.customerId">{{loan.maturityDate}}</td>
+        <td *ngIf="customerSearchId==loan.customerId">{{loan.paymentFrequency  | number}}</td>
+        <td *ngIf="customerSearchId==loan.customerId">{{loan.interestRate  | number  : '1.2-2'}}</td>
+        <td *ngIf="customerSearchId==loan.customerId"><button (click)="viewPaymentSchedule(loan.loanId)" class="btn btn-primary">View</button></td>
+      </tr >
+      <!-- <tr> <td colspan="9" class="text-left" > <button (click)="addLoan(id)" class="btn btn-primary"  >Apply For A New Loan</button></td>
+      </tr> -->
+    </tbody>
+  </table>
+
+
+  <table class="table container" *ngIf="!customerSearchId">
     <thead>
       <tr>
         <th scope="col">Loan Id</th>
@@ -21,7 +55,7 @@
     </thead>
     <tbody>
       <tr  *ngFor="let loan of loans | paginate: { itemsPerPage: 5, currentPage: p }">
-        <th scope="row">{{loan.loanId}}</th>
+        <th scope="row" >{{loan.loanId}}</th>
         <td>{{loan.customerId}}</td>
         <td>{{loan.loanAmount  | number  : '1.2-2'}}</td>
         <td>{{loan.tradeDate}}</td>
@@ -35,10 +69,12 @@
       </tr> -->
     </tbody>
   </table>
+
+
   <div style="margin: 1%;"> <button (click)="addLoan(id)" class="btn btn-primary buttonHover"  >Apply For A New Loan</button></div>
-
-  <pagination-controls (pageChange)="p = $event"></pagination-controls>
-
+  <div *ngIf="!customerSearchId"> <pagination-controls (pageChange)="p = $event"></pagination-controls>
+  </div>
+ 
 <br>
 <div *ngIf="isShow==true">
   <h1 class="text-center">Payment Shedules</h1>
@@ -71,4 +107,3 @@
   </table>
   <br>
   </div>
-  <!-- <div>customerSearchId</div> -->

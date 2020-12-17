@@ -97,4 +97,10 @@ export class WelcomeComponent implements OnInit {
    
       this.router.navigate(['list_payment_schedules', loanIdCurrentSchedule]);
     }
+
+    handleSearch(
+      customerSearchId1
+    ){
+      this.customerSearchId=customerSearchId1;
+    }
 }
