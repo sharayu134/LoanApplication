@@ -29,6 +29,11 @@ tr:hover{
   border-color: seashell;
 }
 
+.alert{color: red;
+padding: 0;
+margin: 0%;
+font-size: 15px;}
+
 th{color: #17a2b8;}
 /* body{ background:linear-gradient(135deg, #0999d8 0%, #00d0d0 100%) !important;} */
 thead{ background-color:#cdf1d8;}

@@ -4,7 +4,7 @@ import { LoanService } from './../service/data/loan.service';
 import { Loan } from '../welcome/welcome.component';
 import { DatePipe } from '@angular/common';
 import { ToastrService } from 'ngx-toastr';
-
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 @Component({
   selector: 'app-loanapplication',
   templateUrl: './loanapplication.component.html',
@@ -34,6 +34,8 @@ export class LoanapplicationComponent implements OnInit {
 
   saveLoan(){
     console.log(this.loan);
+    // this.loan.maturityDate=new Date();
+    // this.loan.tradeDate=new Date();
     this.loanService.createLoan(this.id, this.loan)
           .subscribe (
             data => {

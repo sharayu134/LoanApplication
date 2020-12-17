@@ -6,23 +6,31 @@
 <div class="container">
   <fieldset class="form-group">
     <label for="">Enter Customer Id</label>
-    <input type="number" [(ngModel)]="loan.customerId" class="form-control" name="customerId" required="required">
+    <input type="number" [(ngModel)]="loan.customerId" class="form-control" name="customerId" required="required" placeholder="Customer ID" id="customerId" min=10000>
+    <div class="alert" *ngIf="!(loan.customerId>10000 )">Enter Valid Input</div>
+
+    <!-- <input name="myName" ng-model="myName" minlength="4" required>
+<span ng-show="myForm.myName.$touched && myForm.myName.$invalid">The name is required.</span> -->
+
 </fieldset>
 
     <fieldset class="form-group">
-        <label for="">loan Amount  (must be greater than zero)</label>
+        <label for="">Loan Amount  (must be greater than zero)</label>
         <input type="number" min=1 [(ngModel)]="loan.loanAmount" class="form-control" name="loanAmount" required="required">
-    </fieldset>
+        <div  class="alert" *ngIf="!(loan.loanAmount>0 )">Enter Valid Input</div>
+      </fieldset>
 
     <fieldset class="form-group">
       <label for="">Interest Rate</label>
       <input type="number" min=1 [(ngModel)]="loan.interestRate" class="form-control" name="interestRate" required="required">
-  </fieldset>
+      <div  class="alert" *ngIf="!(loan.interestRate>0 )">Enter Valid Input</div>
+    </fieldset>
   
     <fieldset class="form-group">
       <label for="">Period In Years</label>
       <input type="number" min=1 [(ngModel)]="loan.tenure" class="form-control"  pattern="[0-9]+" name="tenure" required="required">
-  </fieldset>
+      <div class="alert" *ngIf="!(loan.tenure>0 )">Enter Valid Input</div>
+    </fieldset>
 
 <br>
     <fieldset>
@@ -80,6 +88,6 @@
     </fieldset>
 
 <br>
-    <button type="submit" class="btn btn-primary" (click)="saveLoan()" *ngIf="(loan.loanAmount>0 && loan.loanAmount && loan.paymentFrequency>0 &&loan.interestRate>0 && loan.tenure>0 )">Click Here To Apply</button>
+    <button type="submit" class="btn btn-primary" (click)="saveLoan()" [disabled]="!(loan.loanAmount>0 && loan.loanAmount && loan.paymentFrequency>0 &&loan.interestRate>0 && loan.tenure>0 )">Click Here To Apply</button>
 </div>
 </div><br><br><br>

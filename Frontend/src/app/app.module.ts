@@ -22,6 +22,8 @@ import { LoanListWithServerSidePaginationComponent } from './loan-list-with-serv
 import {LoanService} from '../app/service/data/loan.service';
 import { ListpaymentschedulesComponent } from './listpaymentschedules/listpaymentschedules.component';
 
+import { ReactiveFormsModule } from '@angular/forms';
+
 @NgModule({
   declarations: [
     AppComponent,
