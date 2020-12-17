@@ -1,0 +1,77 @@
+<br>
+<br>
+<br>
+<div class="container">
+
+<h1 class="text-center">Loan Details</h1>
+
+<table class="table container">
+    <thead>
+      <tr>
+        <th scope="col">Loan Id</th>
+        <th scope="col">Customer Id</th>
+        <th scope="col">Amount(Rs)</th>
+        <th scope="col">Trade Date</th>
+        <th scope="col">Start Date</th>
+        <th scope="col">Maturity Date</th>
+        <th scope="col">Payment Frequency</th>
+        <th scope="col">Interest Rate</th>
+        <th scope="col">Click To View</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr  *ngFor="let loan of loans">
+        <th scope="row">{{loan.loanId}}</th>
+        <td>{{loan.customerId}}</td>
+        <td>{{loan.loanAmount  | number  : '1.2-2'}}</td>
+        <td>{{loan.tradeDate}}</td>
+        <td>{{loan.loanStartDate}}</td>
+        <td>{{loan.maturityDate}}</td>
+        <td>{{loan.paymentFrequency  | number}}</td>
+        <td>{{loan.interestRate  | number  : '1.2-2'}}</td>
+        <td><button (click)="toggleDisplay(loan.loanId)" class="btn btn-primary">View</button></td>
+      </tr >
+      <tr> <td colspan="9" class="text-left" > <button (click)="addLoan(id)" class="btn btn-primary"  >Apply For A New Loan</button></td>
+      </tr>
+    </tbody>
+  </table>
+  <!-- <hr> -->
+  <ul class="nav nav-pills">
+      <li class="nav-item" *ngFor="let p of pages; let i=index">
+          <a href="" class="nav-link" (click)="setPage(i,$event)" [ngClass]="{'active':i==page}">{{i}}</a>
+      </li>
+  </ul>
+  <!-- <pagination-controls (pageChange)="p = $event"></pagination-controls> -->
+
+<br>
+<div *ngIf="isShow==true">
+  <h1 class="text-center">Payment Shedules</h1>
+
+  <table class="table container">
+    <thead>
+      <tr>
+        <th scope="col">Loan Id</th>
+        <th scope="col">Payment Date</th>
+        <th scope="col">Principal(Rs) </th>
+        <th scope="col">Projected Interest(Rs) </th>
+        <th scope="col">Payment Amount(Rs) </th>
+        <th scope="col">Payment Status</th>
+      </tr>
+      
+    </thead>
+    <tbody>
+      <tr  *ngFor="let paymentShedule of paymentShedules">
+        <th *ngIf="paymentShedule.loanId==loanIdCurrentSchedule" scope="row">{{paymentShedule.loanId}}</th>
+        <td *ngIf="paymentShedule.loanId==loanIdCurrentSchedule" >{{paymentShedule.paymentDate}}</td>
+        <td *ngIf="paymentShedule.loanId==loanIdCurrentSchedule" >{{paymentShedule.principal  | number : '1.2-2'}}</td>
+        <td *ngIf="paymentShedule.loanId==loanIdCurrentSchedule" >{{paymentShedule.projectedInterest  | number : '1.2-2' }}</td>
+        <td *ngIf="paymentShedule.loanId==loanIdCurrentSchedule" >{{paymentShedule.paymentAmount  | number : '1.2-2'}}</td>
+        <td *ngIf="paymentShedule.loanId==loanIdCurrentSchedule" >{{paymentShedule.paymentStatus}}</td>
+      </tr> 
+    
+      <tr><br></tr> 
+      <tr><br></tr> 
+    </tbody>
+  </table>
+  <br>
+  </div>

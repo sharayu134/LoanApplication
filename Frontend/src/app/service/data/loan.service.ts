@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Loan } from 'src/app/welcome/welcome.component';
 
 @Injectable({
@@ -18,5 +18,9 @@ export class LoanService {
     return this.http.post(
       `http://localhost:8080/loans`
         , loan);
+  }
+ 
+  getPaginatedLoanList(page:number){
+    return this.http.get('http://localhost:8080/loans/list?page='+page);
   }
 }

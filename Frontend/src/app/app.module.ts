@@ -16,7 +16,10 @@ import { CommonModule } from '@angular/common';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 
-import {NgxPaginationModule} from 'ngx-pagination'; // <-- import the module
+import {NgxPaginationModule} from 'ngx-pagination';
+import { LoanListWithServerSidePaginationComponent } from './loan-list-with-server-side-pagination/loan-list-with-server-side-pagination.component'; // <-- import the module
+
+import {LoanService} from '../app/service/data/loan.service';
 
 @NgModule({
   declarations: [
@@ -26,7 +29,8 @@ import {NgxPaginationModule} from 'ngx-pagination'; // <-- import the module
     ErrorComponent,
     HeaderComponent,
     FooterComponent,
-    LoanapplicationComponent
+    LoanapplicationComponent,
+    LoanListWithServerSidePaginationComponent
   ],
   imports: [
     BrowserModule,
@@ -38,7 +42,7 @@ import {NgxPaginationModule} from 'ngx-pagination'; // <-- import the module
     ToastrModule.forRoot(), // ToastrModule added
     NgxPaginationModule
   ],
-  providers: [],
+  providers: [LoanService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
