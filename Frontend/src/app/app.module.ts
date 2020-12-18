@@ -44,7 +44,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     CommonModule,
     BrowserAnimationsModule, // required animations module
     ToastrModule.forRoot(), // ToastrModule added
-    NgxPaginationModule
+    NgxPaginationModule,
+    ReactiveFormsModule
   ],
   providers: [LoanService],
   bootstrap: [AppComponent]

@@ -4,57 +4,59 @@
   <br>
 <H2>Fill Out The Form Below</H2>
 <div class="container">
+  <form name="form" [formGroup]="form">
+  
   <fieldset class="form-group">
-    <label for="">Enter Customer Id</label>
-    <input type="number" [(ngModel)]="loan.customerId" class="form-control" name="customerId" required="required" placeholder="Customer ID" id="customerId" min=10000>
-    <div class="alert" *ngIf="!(loan.customerId>10000 )">Enter Valid Input</div>
-
-    <!-- <input name="myName" ng-model="myName" minlength="4" required>
-<span ng-show="myForm.myName.$touched && myForm.myName.$invalid">The name is required.</span> -->
-
+    <label for="customerId">Enter Customer Id</label>
+    <input type="number" [(ngModel)]="loan.customerId" class="form-control" name="customerId"  id="customerId" formControlName="customerId" [ngClass]="{'is-invalid':form.get('customerId').touched && form.get('customerId').invalid}">
+    <div class="invalid-feedback" *ngIf="(form.get('customerId').touched )&&(form.get('customerId').errors.min)">Enter Valid Input.</div>
+    <div class="invalid-feedback" *ngIf="(form.get('customerId').touched )&& (form.get('customerId').errors.required)">Enter customer Id.</div>
 </fieldset>
 
     <fieldset class="form-group">
-        <label for="">Loan Amount  (must be greater than zero)</label>
-        <input type="number" min=1 [(ngModel)]="loan.loanAmount" class="form-control" name="loanAmount" required="required">
-        <div  class="alert" *ngIf="!(loan.loanAmount>0 )">Enter Valid Input</div>
+        <label for="loanAmount">Loan Amount </label>
+        <input type="number" [(ngModel)]="loan.loanAmount" class="form-control" name="loanAmount" id="loanAmount"  formControlName="loanAmount" [ngClass]="{'is-invalid':form.get('loanAmount').touched && form.get('loanAmount').invalid}">
+        <div class="invalid-feedback" *ngIf="(form.get('loanAmount').touched )&& (form.get('loanAmount').errors.required)">Enter loan amount.</div>
+        <div class="invalid-feedback" *ngIf="(form.get('loanAmount').touched )&&(form.get('loanAmount').errors.min)">Must be greater than zero.</div>
       </fieldset>
 
     <fieldset class="form-group">
-      <label for="">Interest Rate</label>
-      <input type="number" min=1 [(ngModel)]="loan.interestRate" class="form-control" name="interestRate" required="required">
-      <div  class="alert" *ngIf="!(loan.interestRate>0 )">Enter Valid Input</div>
+      <label for="interestRate">Interest Rate</label>
+      <input type="number" min=1 [(ngModel)]="loan.interestRate" class="form-control" name="interestRate" id="interestRate" formControlName="interestRate" [ngClass]="{'is-invalid':form.get('interestRate').touched && form.get('interestRate').invalid}" >
+      <div class="invalid-feedback" *ngIf="(form.get('interestRate').touched )&&(form.get('interestRate').errors.min)">Enter valid interest rate.</div>
+      <div class="invalid-feedback" *ngIf="(form.get('interestRate').touched )&& (form.get('interestRate').errors.required)">Enter interest rate.</div>
     </fieldset>
   
     <fieldset class="form-group">
-      <label for="">Period In Years</label>
-      <input type="number" min=1 [(ngModel)]="loan.tenure" class="form-control"  pattern="[0-9]+" name="tenure" required="required">
-      <div class="alert" *ngIf="!(loan.tenure>0 )">Enter Valid Input</div>
+      <label for="tenure">Period In Years</label>
+      <input type="number" [(ngModel)]="loan.tenure" class="form-control"  pattern="[0-9]+" name="tenure" id="tenure" formControlName="tenure" [ngClass]="{'is-invalid':form.get('tenure').touched && form.get('tenure').invalid}" >
+      <div class="invalid-feedback" *ngIf="(form.get('tenure').touched )&&(form.get('tenure').errors.min)">Enter valid tenure.</div>
+      <div class="invalid-feedback" *ngIf="(form.get('tenure').touched )&& (form.get('tenure').errors.required)">Enter tenure.</div>
     </fieldset>
 
 <br>
-    <fieldset>
-    <label for="">payment Frequency :</label>
+    <fieldset class="form-group">
+    <label for="loan.paymentFrequency">payment Frequency :</label>
     <div class="form-check">
-        <input class="form-check-input" type="radio" name="exampleRadios" [(ngModel)]="loan.paymentFrequency" id="exampleRadios1" value=12 checked>
+        <input class="form-check-input" type="radio" name="paymentFrequency" [(ngModel)]="loan.paymentFrequency" id="exampleRadios1" value=12 checked  formControlName="paymentFrequency">
         <label class="form-check-label" for="exampleRadios1">
           Monthly
         </label>
       </div>
       <div class="form-check">
-        <input class="form-check-input" type="radio" name="exampleRadios" [(ngModel)]="loan.paymentFrequency" id="exampleRadios2" value=4 required>
+        <input class="form-check-input" type="radio" name="paymentFrequency" [(ngModel)]="loan.paymentFrequency" id="exampleRadios2" value=4 required  formControlName="paymentFrequency">
         <label class="form-check-label" for="exampleRadios2">
             Quarterly
         </label>
       </div>
       <div class="form-check">
-        <input class="form-check-input" type="radio" name="exampleRadios" [(ngModel)]="loan.paymentFrequency" id="exampleRadios3" value=2 checked>
+        <input class="form-check-input" type="radio" name="paymentFrequency" [(ngModel)]="loan.paymentFrequency" id="exampleRadios3" value=2 checked  formControlName="paymentFrequency">
         <label class="form-check-label" for="exampleRadios3">
             Half Yearly
         </label>
       </div>
       <div class="form-check">
-        <input class="form-check-input" type="radio" name="exampleRadios" [(ngModel)]="loan.paymentFrequency" id="exampleRadios4" value=1 checked>
+        <input class="form-check-input" type="radio" name="paymentFrequency" [(ngModel)]="loan.paymentFrequency" id="exampleRadios4" value=1 [value]=1 checked  formControlName="paymentFrequency">
         <label class="form-check-label" for="exampleRadios4">
             Yearly
         </label>
@@ -62,17 +64,17 @@
     </fieldset>
     <br>
     
-    <fieldset>
+    <fieldset class="form-group">
       <label for="">Principle Type :</label>
       <div class="form-check">
-          <input class="form-check-input" type="radio" name="exampleRadios31" [(ngModel)]="loan.principle" id="exampleRadios31" value="EVEN" checked>
+          <input class="form-check-input" type="radio" name="principle" [(ngModel)]="loan.principle" id="exampleRadios31" [value]=evenString  value="EVEN" formControlName="principle">
           <label class="form-check-label" for="exampleRadios31">
             Even
           </label>
         </div>
         <div class="form-check">
-          <input class="form-check-input" type="radio" name="exampleRadios32" [(ngModel)]="loan.principle" id="exampleRadios32" value="INTEREST_ONLY" required>
-          <label class="form-check-label" for="exampleRadios2">
+          <input class="form-check-input" type="radio" name="principle" [(ngModel)]="loan.principle" id="exampleRadios32" value="INTEREST_ONLY"  [value]=interestOnlyString  formControlName="principle">
+          <label class="form-check-label" for="exampleRadios32">
               Interest Only
           </label>
         </div>
@@ -83,11 +85,13 @@
 <fieldset>
       <div>
         <label for="">Select A Date To Start Loan</label>
-        <input class="form-control" type="date"  min="2020-11-03" value="2020-11-02" [(ngModel)]="loan.loanStartDate" id="example-date-input" required>
+        <input class="form-control" type="date"  min="2020-11-03" value="2020-11-02" [(ngModel)]="loan.loanStartDate" id="example-date-input" required  formControlName="tenure"> 
       </div>
     </fieldset>
-
+  </form>
 <br>
-    <button type="submit" class="btn btn-primary" (click)="saveLoan()" [disabled]="!(loan.loanAmount>0 && loan.loanAmount && loan.paymentFrequency>0 &&loan.interestRate>0 && loan.tenure>0 )">Click Here To Apply</button>
+    <button type="submit" class="btn btn-primary" (click)="saveLoan()" [disabled]="(loan.loanAmount>0 && loan.loanAmount && loan.paymentFrequency>0 &&loan.interestRate>0 && loan.tenure>0 )">Click Here To Apply</button>
 </div>
+<div>{{loan.principle}}</div>
+<div>{{loan.paymentFrequency}}</div><div>{{loan.tenure}}</div>
 </div><br><br><br>

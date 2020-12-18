@@ -5,6 +5,8 @@ import { Loan } from '../welcome/welcome.component';
 import { DatePipe } from '@angular/common';
 import { ToastrService } from 'ngx-toastr';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+
+
 @Component({
   selector: 'app-loanapplication',
   templateUrl: './loanapplication.component.html',
@@ -12,12 +14,24 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
   providers: [DatePipe]
 })
 
+
 export class LoanapplicationComponent implements OnInit {
+   
+  form = new FormGroup({
+    customerId: new FormControl('', [Validators.required,Validators.min(10000)]),
+    loanAmount: new FormControl('', [Validators.required,Validators.min(1)]),
+    interestRate: new FormControl('', [Validators.required,Validators.min(1)]),
+    tenure: new FormControl('', [Validators.required,Validators.min(1)]),    
+    principle: new FormControl('', Validators.required),
+    paymentFrequency: new FormControl('', Validators.required),    
+   });
 
   id: 0;
   loan: Loan;
   even: number;
   currentDate = new Date();
+  evenString='EVEN';
+  interestOnlyString='INTEREST_ONLY';
 
   constructor(
     private loanService: LoanService,
