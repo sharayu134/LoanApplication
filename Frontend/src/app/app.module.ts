@@ -23,7 +23,9 @@ import {LoanService} from '../app/service/data/loan.service';
 import { ListpaymentschedulesComponent } from './listpaymentschedules/listpaymentschedules.component';
 
 import { ReactiveFormsModule } from '@angular/forms';
-
+import { CurrencyMaskModule } from "ng2-currency-mask";
+import { from } from 'rxjs';
+// ./number-comma.directive';
 @NgModule({
   declarations: [
     AppComponent,
@@ -34,7 +36,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     FooterComponent,
     LoanapplicationComponent,
     LoanListWithServerSidePaginationComponent,
-    ListpaymentschedulesComponent
+    ListpaymentschedulesComponent,
   ],
   imports: [
     BrowserModule,
@@ -45,7 +47,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     BrowserAnimationsModule, // required animations module
     ToastrModule.forRoot(), // ToastrModule added
     NgxPaginationModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,CurrencyMaskModule
   ],
   providers: [LoanService],
   bootstrap: [AppComponent]

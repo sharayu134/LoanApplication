@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Pipe, PipeTransform } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { LoanService } from './../service/data/loan.service';
 import { Loan } from '../welcome/welcome.component';
@@ -6,12 +6,11 @@ import { DatePipe } from '@angular/common';
 import { ToastrService } from 'ngx-toastr';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 
-
 @Component({
   selector: 'app-loanapplication',
   templateUrl: './loanapplication.component.html',
   styleUrls: ['./loanapplication.component.css'],
-  providers: [DatePipe]
+  providers: [DatePipe],
 })
 
 
@@ -26,6 +25,8 @@ export class LoanapplicationComponent implements OnInit {
     paymentFrequency: new FormControl('', Validators.required),    
    });
 
+  
+
   id: 0;
   loan: Loan;
   even: number;
@@ -38,14 +39,14 @@ export class LoanapplicationComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     public datePipe: DatePipe,
-    private toastr: ToastrService
+    private toastr: ToastrService,
   ) { }
 
   ngOnInit(): void {
     this.id = this.route.snapshot.params.id;
     this.loan = new Loan(0, 0, 0, new Date(), new Date(), new Date(), 0, 0, 0, '');
   }
-
+  // '1.0-0'
   saveLoan(){
     console.log(this.loan);
     // this.loan.maturityDate=new Date();

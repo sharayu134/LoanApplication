@@ -13,9 +13,32 @@
     <div class="invalid-feedback" *ngIf="(form.get('customerId').touched )&& (form.get('customerId').errors.required)">Enter customer Id.</div>
 </fieldset>
 
-    <fieldset class="form-group">
+    <!-- <fieldset class="form-group">
         <label for="loanAmount">Loan Amount </label>
-        <input type="number" [(ngModel)]="loan.loanAmount" class="form-control" name="loanAmount" id="loanAmount"  formControlName="loanAmount" [ngClass]="{'is-invalid':form.get('loanAmount').touched && form.get('loanAmount').invalid}">
+        <input type="number" [(ngModel)]="loan.loanAmount | number 1.0-0 " class="form-control" name="loanAmount" id="loanAmount"  formControlName="loanAmount" [ngClass]="{'is-invalid':form.get('loanAmount').touched && form.get('loanAmount').invalid}">
+        <div class="invalid-feedback" *ngIf="(form.get('loanAmount').touched )&& (form.get('loanAmount').errors.required)">Enter loan amount.</div>
+        <div class="invalid-feedback" *ngIf="(form.get('loanAmount').touched )&&(form.get('loanAmount').errors.min)">Must be greater than zero.</div>
+      </fieldset> -->
+        <!-- inputWithComma | number: '0.2-2' [ngModel]="tempProduct.unitprice | number : '1.2-2'" (ngModelChange)="tempProduct.unitprice = $event" -->
+<!-- 
+      <fieldset class="form-group">
+        <label for="loanAmount">Loan Amount </label>
+        <input type="number" [ngModel]="loan.loanAmount |number: '4.0-0'" (ngModelChange)="loan.loanAmount  = $event" class="form-control" name="loanAmount" id="loanAmount"  formControlName="loanAmount" [ngClass]="{'is-invalid':form.get('loanAmount').touched && form.get('loanAmount').invalid}">
+        <div class="invalid-feedback" *ngIf="(form.get('loanAmount').touched )&& (form.get('loanAmount').errors.required)">Enter loan amount.</div>
+        <div class="invalid-feedback" *ngIf="(form.get('loanAmount').touched )&&(form.get('loanAmount').errors.min)">Must be greater than zero.</div>
+      </fieldset> -->
+        <!-- | number: '0.2-2' inputWithComma [ngModel]="tempProduct.unitprice | number : '1.2-2'" (ngModelChange)="tempProduct.unitprice = $event" -->
+<!-- 
+<fieldset class="form-group">
+        <label for="loanAmount">Loan Amount </label>
+        <input type="number" [(ngModel)]="loan.loanAmount " class="form-control" name="loanAmount" id="loanAmount"  formControlName="loanAmount" [ngClass]="{'is-invalid':form.get('loanAmount').touched && form.get('loanAmount').invalid} " >
+        <div class="invalid-feedback" *ngIf="(form.get('loanAmount').touched )&& (form.get('loanAmount').errors.required)">Enter loan amount.</div>
+        <div class="invalid-feedback" *ngIf="(form.get('loanAmount').touched )&&(form.get('loanAmount').errors.min)">Must be greater than zero.</div>
+      </fieldset> -->
+
+       <fieldset class="form-group">
+        <label for="loanAmount">Loan Amount </label>
+        <input currencyMask [(ngModel)]="loan.loanAmount " [options]="{ prefix: 'Rs', thousands: ',', decimal: '.' }"  class="form-control" name="loanAmount" id="loanAmount"  formControlName="loanAmount" [ngClass]="{'is-invalid':form.get('loanAmount').touched && form.get('loanAmount').invalid}">
         <div class="invalid-feedback" *ngIf="(form.get('loanAmount').touched )&& (form.get('loanAmount').errors.required)">Enter loan amount.</div>
         <div class="invalid-feedback" *ngIf="(form.get('loanAmount').touched )&&(form.get('loanAmount').errors.min)">Must be greater than zero.</div>
       </fieldset>
