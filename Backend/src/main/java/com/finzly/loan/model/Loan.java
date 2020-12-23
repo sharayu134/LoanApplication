@@ -40,7 +40,7 @@ public class Loan {
 	@Column(name = "payment_frequency") 
 	private int paymentFrequency;
 	
-	@Column(name = "interestrate") 
+	@Column(name = "interest_rate") 
 	private double interestRate;
 	
 	@Column(name = "tenure")
