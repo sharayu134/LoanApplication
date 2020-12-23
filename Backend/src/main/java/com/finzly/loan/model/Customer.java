@@ -15,7 +15,7 @@ public class Customer {
 	
 	@Id
 	@GeneratedValue
-	@Column(name = "customerid") 
+	@Column(name = "customer_Id") 
 	private int customerId;
 	
 	private String password;

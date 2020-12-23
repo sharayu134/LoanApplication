@@ -3,6 +3,7 @@ package com.finzly.loan.service;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 //import org.slf4j.Logger;
 //import org.slf4j.LoggerFactory;
@@ -33,6 +34,14 @@ public class PaymentScheduleService {
 	public List<PaymentSchedule> listAll(){
 		return paymentScheduleRepository.findAll();
 	}
+	
+//	public List<PaymentSchedule> listByID(int loanID){
+////		return paymentScheduleRepository.findById(loanID);
+//		paymentScheduleRepository.f
+//		Optional<PaymentSchedule> optinalEntity =  paymentScheduleRepository.findById(loanID);
+//		PaymentSchedule paymentSchedule = optinalEntity.get();
+//		return paymentSchedule;
+//	}
 	
 	public List<PaymentSchedule> save(Loan loan) {
 		

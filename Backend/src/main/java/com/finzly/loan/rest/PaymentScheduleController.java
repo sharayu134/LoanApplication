@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.finzly.loan.model.PaymentSchedule;
@@ -25,4 +26,9 @@ public class PaymentScheduleController {
 	public List<PaymentSchedule>list(){
 		return paymentScheduleService.listAll(); 
 	}
+	
+//	@GetMapping("/paymentschedule/{loan_id}")
+//	public List<PaymentSchedule>listPerId(@PathVariable Integer loan_id){
+//		return paymentScheduleService.listByID(loan_id);
+//	}
 }

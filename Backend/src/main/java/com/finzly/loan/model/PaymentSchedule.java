@@ -21,25 +21,25 @@ public class PaymentSchedule {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "paymentscheduleid") 
+	@Column(name = "payment_schedule_id") 
 	private int paymentScheduleId;
 	
-	@Column(name = "loanid") 
+	@Column(name = "loan_id") 
 	private int loanId;
 	
-	@Column(name = "paymentdate") 
+	@Column(name = "payment_date") 
 	private LocalDate paymentDate;
 	
 	@Column(name = "principal") 
 	private double principal;
 	
-	@Column(name = "projectedinterest") 
+	@Column(name = "projected_interest") 
 	private double projectedInterest;
 	
-	@Column(name = "paymentstatus") 
+	@Column(name = "payment_status") 
 	private String paymentStatus;
 	
-	@Column(name = "paymentamount") 
+	@Column(name = "payment_amount") 
 	private double paymentAmount;
 	
 	

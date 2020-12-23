@@ -19,25 +19,25 @@ public class Loan {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "loanid") 
+	@Column(name = "loan_id") 
 	private int loanId;
 	
-	@Column(name = "customerid") 
+	@Column(name = "customer_id") 
 	private int customerId;
 	
-	@Column(name = "loanamount") 
+	@Column(name = "loan_amount") 
 	private double loanAmount;
 	
-	@Column(name = "tradedate") 
+	@Column(name = "trade_date") 
 	private LocalDate tradeDate;
 	
-	@Column(name = "loanstartdate") 
+	@Column(name = "loan_start_date") 
 	private LocalDate loanStartDate;
 	
-	@Column(name = "maturitydate") 
+	@Column(name = "maturity_date") 
 	private LocalDate maturityDate;
 	
-	@Column(name = "paymentfrequency") 
+	@Column(name = "payment_frequency") 
 	private int paymentFrequency;
 	
 	@Column(name = "interestrate") 
