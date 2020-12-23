@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -39,10 +41,17 @@ public class LoanController {
 		return loanService.listAll(); 
 	}
 	
+//	@PostMapping("/loans")
+//	public void add(@RequestBody Loan  loan) {	
+//		loanService.save(loan);
+//}
+	
 	@PostMapping("/loans")
-	public void add(@RequestBody Loan  loan) {	
-		loanService.save(loan);
+	public ResponseEntity<Loan> add(@RequestBody Loan  loan) {	
+		Loan newLoan=loanService.save(loan);
+		return new ResponseEntity<Loan>(newLoan, HttpStatus.CREATED);
 }
+
 	@GetMapping("/loans/page/{pageNumber}/page_size/{pageSize}")
 	public String findPaginatedList(@PathVariable (value="pageNumber") int pageNumber,@PathVariable (value="pageSize") int pageSize, Model model){
 		
