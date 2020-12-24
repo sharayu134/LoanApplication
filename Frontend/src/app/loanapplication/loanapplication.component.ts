@@ -63,10 +63,10 @@ export class LoanapplicationComponent implements OnInit {
             data => {
               console.log(data);
               this.router.navigate(['welcome', this.id]);
-
+              if(data){this.toastr.info('Loan created successfully', '');}
             }
           );
-    this.toastr.info('Loan created successfully', '');
+
   }
 
 }
