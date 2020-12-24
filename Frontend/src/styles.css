@@ -38,10 +38,12 @@ th{color: #17a2b8;}
 /* body{ background:linear-gradient(135deg, #0999d8 0%, #00d0d0 100%) !important;} */
 thead{ background-color:#cdf1d8;}
 h1{color: #17a2b8;
-  padding-bottom: 0.5%;}
+  padding-top: 1%;
+  /* padding-bottom: 0.5%; */
+  font-family: "Times New Roman", Times, serif,Cursive;}
 
   h2{color: #17a2b8;
-    padding-bottom: 0.5%;}
+    padding-bottom: 0.5%;font-family: "Times New Roman", Times, serif,Cursive;}
 .btn:hover{
   cursor: grab;
   background-color: #0a56fa;

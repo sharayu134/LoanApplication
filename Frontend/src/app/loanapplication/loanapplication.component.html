@@ -113,7 +113,7 @@
     </fieldset>
   </form>
 <br>
-    <button type="submit" class="btn btn-primary" (click)="saveLoan()" [disabled]="(loan.loanAmount>0 && loan.loanAmount && loan.paymentFrequency>0 &&loan.interestRate>0 && loan.tenure>0 )">Click Here To Apply</button>
+    <button type="submit" class="btn btn-primary" (click)="saveLoan()" >Click Here To Apply</button>
 </div>
-
+<!-- form"!(loan.loanAmount>0 && loan.loanAmount && loan.paymentFrequency>0 &&loan.interestRate>0 && loan.tenure>0 )"[disabled]="!form.valid" -->
 </div><br><br><br>
