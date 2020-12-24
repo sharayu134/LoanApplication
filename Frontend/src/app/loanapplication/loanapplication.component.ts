@@ -6,6 +6,11 @@ import { DatePipe } from '@angular/common';
 import { ToastrService } from 'ngx-toastr';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 
+enum PaymentStatus {
+  even = 'EVEN',
+  interestOnly = 'INTEREST_ONLY',
+}
+
 @Component({
   selector: 'app-loanapplication',
   templateUrl: './loanapplication.component.html',
@@ -15,7 +20,9 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 
 export class LoanapplicationComponent implements OnInit {
-   
+  
+  paymentStatus = PaymentStatus;
+
   form = new FormGroup({
     customerId: new FormControl('', [Validators.required,Validators.min(10000)]),
     loanAmount: new FormControl('', [Validators.required,Validators.min(1)]),
@@ -25,7 +32,7 @@ export class LoanapplicationComponent implements OnInit {
     paymentFrequency: new FormControl('', Validators.required),    
    });
 
-  
+   
 
   id: 0;
   loan: Loan;

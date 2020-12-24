@@ -90,19 +90,21 @@
     <fieldset class="form-group">
       <label for="">Principle Type :</label>
       <div class="form-check">
-          <input class="form-check-input" type="radio" name="principle" [(ngModel)]="loan.principle" id="exampleRadios31" [value]=evenString  value="EVEN" formControlName="principle">
+          <input class="form-check-input" type="radio" name="principle" [(ngModel)]="loan.principle" id="exampleRadios31" [value]=paymentStatus.even  value=paymentStatus.even formControlName="principle">
           <label class="form-check-label" for="exampleRadios31">
             Even
           </label>
         </div>
         <div class="form-check">
-          <input class="form-check-input" type="radio" name="principle" [(ngModel)]="loan.principle" id="exampleRadios32" value="INTEREST_ONLY"  [value]=interestOnlyString  formControlName="principle">
+          <input class="form-check-input" type="radio" name="principle" [(ngModel)]="loan.principle" id="exampleRadios32" value=paymentStatus.interestOnly  [value]=paymentStatus.interestOnly   formControlName="principle">
           <label class="form-check-label" for="exampleRadios32">
               Interest Only
           </label>
         </div>
       </fieldset>
-     
+      <!-- <input class="form-check-input" type="radio" name="principle" [(ngModel)]="loan.principle" id="exampleRadios31" [value]=evenString  value="EVEN" formControlName="principle"> -->
+      <!-- <input sclass="form-check-input" type="radio" name="principle" [(ngModel)]="loan.principle" id="exampleRadios32" value="INTEREST_ONLY"  [value]=interestOnlyString  formControlName="principle"> -->
+
 <br>
 
 <fieldset>
