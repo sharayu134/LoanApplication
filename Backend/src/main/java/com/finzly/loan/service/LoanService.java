@@ -45,7 +45,8 @@ public class LoanService {
 		loan.setTradeDate( LocalDate.now() );
 		loan.setMaturityDate(loan.getLoanStartDate().plusYears(loan.getTenure()));
 		loanRepository.save(loan);
-		PaymentScheduleService.save(loan);	
+//		PaymentScheduleService.save(loan);	
+		PaymentScheduleService.savePaymentSchedule(loan);	
 		return loan;
 	}
 	
