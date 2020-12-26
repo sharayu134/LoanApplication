@@ -20,6 +20,7 @@ import com.finzly.loan.model.PaymentSchedule;
  * This is Payment Schedule service class
  */
 
+
 @Service
 public class PaymentScheduleService {
 	PaymentScheduleService(){}

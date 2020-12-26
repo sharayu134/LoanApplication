@@ -51,7 +51,7 @@ export class LoanapplicationComponent implements OnInit {
 
   ngOnInit(): void {
     this.id = this.route.snapshot.params.id;
-    this.loan = new Loan(0, 0, 0, new Date(), new Date(), new Date(), 0, 0, 0, '');
+    this.loan = new Loan(null, null, null, new Date(), new Date(), new Date(), null, null, null, '');
   }
   // '1.0-0'
   saveLoan(){
